@@ -142,6 +142,22 @@
 #  define HEDLEY_INTEL_CL_VERSION_CHECK(major,minor,patch) (0)
 #endif
 
+#if defined(HEDLEY_ISPC_VERSION)
+#  undef HEDLEY_ISPC_VERSION
+#endif
+#if defined(ISPC)
+#  define HEDLEY_ISPC_VERSION HEDLEY_VERSION_ENCODE(ISPC_MAJOR_VERSION, ISPC_MINOR_VERSION, 0)
+#endif
+
+#if defined(HEDLEY_ISPC_VERSION_CHECK)
+#  undef HEDLEY_ISPC_VERSION_CHECK
+#endif
+#if defined(HEDLEY_ISPC_VERSION)
+#  define HEDLEY_ISPC_VERSION_CHECK(major, minor, patch) (HEDLEY_ISPC_VERSION >= HEDLEY_VERSION_ENCODE(major, minor, patch))
+#else
+#  define HEDLEY_ISPC_VERSION_CHECK(major, minor, patch) (0)
+#endif
+
 #if defined(HEDLEY_PGI_VERSION)
 #  undef HEDLEY_PGI_VERSION
 #endif
